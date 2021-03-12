@@ -1,0 +1,331 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": false
+  },
+  "version": 1,
+  "newProjectRoot": "libs",
+  "projects": {
+    "pastry-web": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/pastry-web",
+      "sourceRoot": "apps/pastry-web/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/pastry-web",
+            "index": "apps/pastry-web/src/index.html",
+            "main": "apps/pastry-web/src/main.ts",
+            "polyfills": "apps/pastry-web/src/polyfills.ts",
+            "tsConfig": "apps/pastry-web/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/pastry-web/src/favicon.ico",
+              "apps/pastry-web/src/assets"
+            ],
+            "styles": [
+              "apps/pastry-web/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/pastry-web/src/environments/environment.ts",
+                  "with": "apps/pastry-web/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "pastry-web:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "pastry-web:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "pastry-web:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/pastry-web/src/test.ts",
+            "polyfills": "apps/pastry-web/src/polyfills.ts",
+            "tsConfig": "apps/pastry-web/tsconfig.spec.json",
+            "karmaConfig": "apps/pastry-web/karma.conf.js",
+            "assets": [
+              "apps/pastry-web/src/favicon.ico",
+              "apps/pastry-web/src/assets"
+            ],
+            "styles": [
+              "apps/pastry-web/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/pastry-web/tsconfig.app.json",
+              "apps/pastry-web/tsconfig.spec.json",
+              "apps/pastry-web/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "apps/pastry-web/e2e/protractor.conf.js",
+            "devServerTarget": "pastry-web:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "pastry-web:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "pastry-admin": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/pastry-admin",
+      "sourceRoot": "apps/pastry-admin/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/pastry-admin",
+            "index": "apps/pastry-admin/src/index.html",
+            "main": "apps/pastry-admin/src/main.ts",
+            "polyfills": "apps/pastry-admin/src/polyfills.ts",
+            "tsConfig": "apps/pastry-admin/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/pastry-admin/src/favicon.ico",
+              "apps/pastry-admin/src/assets"
+            ],
+            "styles": [
+              "apps/pastry-admin/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/pastry-admin/src/environments/environment.ts",
+                  "with": "apps/pastry-admin/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "pastry-admin:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "pastry-admin:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "pastry-admin:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/pastry-admin/src/test.ts",
+            "polyfills": "apps/pastry-admin/src/polyfills.ts",
+            "tsConfig": "apps/pastry-admin/tsconfig.spec.json",
+            "karmaConfig": "apps/pastry-admin/karma.conf.js",
+            "assets": [
+              "apps/pastry-admin/src/favicon.ico",
+              "apps/pastry-admin/src/assets"
+            ],
+            "styles": [
+              "apps/pastry-admin/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/pastry-admin/tsconfig.app.json",
+              "apps/pastry-admin/tsconfig.spec.json",
+              "apps/pastry-admin/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "apps/pastry-admin/e2e/protractor.conf.js",
+            "devServerTarget": "pastry-admin:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "pastry-admin:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "pastry-commons": {
+      "projectType": "library",
+      "root": "libs/pastry-commons",
+      "sourceRoot": "libs/pastry-commons/src",
+      "prefix": "py",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "libs/pastry-commons/tsconfig.lib.json",
+            "project": "libs/pastry-commons/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/pastry-commons/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/pastry-commons/src/test.ts",
+            "tsConfig": "libs/pastry-commons/tsconfig.spec.json",
+            "karmaConfig": "libs/pastry-commons/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pastry-commons/tsconfig.lib.json",
+              "libs/pastry-commons/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "pastry-components": {
+      "projectType": "library",
+      "root": "libs/pastry-components",
+      "sourceRoot": "libs/pastry-components/src",
+      "prefix": "py",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "libs/pastry-components/tsconfig.lib.json",
+            "project": "libs/pastry-components/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/pastry-components/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/pastry-components/src/test.ts",
+            "tsConfig": "libs/pastry-components/tsconfig.spec.json",
+            "karmaConfig": "libs/pastry-components/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pastry-components/tsconfig.lib.json",
+              "libs/pastry-components/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "pastry-web"
+}
